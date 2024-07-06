@@ -10,7 +10,7 @@ const postChatBodySchema = z.object({ message: z.string() });
 type TPostChatBodyPayload = z.infer<typeof postChatBodySchema>;
 
 ChatRouter.post('/', validateRequestBody(postChatBodySchema), async (req: Request<unknown, unknown, TPostChatBodyPayload>, res: Response) => {
-  const chatResponse = await chat(req.body.message, req.sessionToken);
+  const chatResponse = await chat(req.sessionToken, 'auto', req.body.message);
   res.json(chatResponse);
 });
 
