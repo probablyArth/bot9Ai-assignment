@@ -1,11 +1,11 @@
 import "./App.css";
-import { Button } from "./components/ui/button";
+import ChatWindow from "./components/ChatWindow";
 
 function App() {
   return (
     <>
       <div>
-        <Button>This is a button</Button>
+        <ChatWindow sessionToken={window.crypto.randomUUID()} />
       </div>
     </>
   );
