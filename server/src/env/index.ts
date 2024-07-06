@@ -4,6 +4,7 @@ import { config } from 'dotenv';
 const envSchema = z.object({
   PORT: z.string(),
   CLIENT_ORIGIN_URL: z.string(),
+  OPENAI_API_KEY: z.string(),
 });
 
 export const parseEnv = (): void => {

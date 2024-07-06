@@ -12,7 +12,7 @@ export class Conversation extends Model<InferAttributes<Conversation>, InferCrea
   @AutoIncrement
   declare id: CreationOptional<number>;
 
-  @Attribute(DataTypes.ENUM)
+  @Attribute(DataTypes.ENUM(['ASSISTANT', 'USER']))
   @NotNull
   declare role: Role;
 

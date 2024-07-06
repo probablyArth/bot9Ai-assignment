@@ -8,6 +8,8 @@ import cors from 'cors';
 import { Sequelize } from '@sequelize/core';
 import ensureSession from 'middlewares/ensureSession.middleware';
 import logger from 'middlewares/logger.middleware';
+import ApiRouter from 'routers/index.router';
+import { Conversation } from 'models/conversation';
 
 const app = Express();
 
@@ -15,18 +17,20 @@ app.use(cors({ origin: getEnvVar('CLIENT_ORIGIN_URL') }));
 app.use(Express.json());
 app.use(logger());
 app.use(ensureSession());
+app.use('/api', ApiRouter);
 
 const sequelize = new Sequelize({
   dialect: 'sqlite',
-  storage: 'database.sqlite',
-  database: 'bot9ai',
+  storage: './database.sqlite',
+  models: [Conversation],
 });
 
 sequelize
-  .authenticate()
+  .sync()
   .then(() => {
+    console.log('DB connected');
     app.listen(getEnvVar('PORT'), () => {
-      console.log(`Server is running on port ${getEnvVar('PORT')}`);
+      console.log(`Server is running on http://localhost:${getEnvVar('PORT')}`);
     });
   })
   .catch((error: unknown) => {
