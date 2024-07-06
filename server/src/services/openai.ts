@@ -8,9 +8,9 @@ const client = new OpenAI({ apiKey: getEnvVar('OPENAI_API_KEY') });
 
 const assistantPrompts: ChatCompletionMessageParam[] = [
   { role: 'system', content: 'you are a helpful assistant' },
+  { role: 'system', content: 'you should understand the tone of the user and talk in the same tone' },
   { role: 'system', content: 'your job is to help the user find the perfect room for them and make a booking' },
   { role: 'system', content: 'if the user is going off topic you should say that you don"t know about it and prompt them to make a booking' },
-  { role: 'system', content: 'you should also understand the tone of the user and talk in the same tone' },
   {
     role: 'system',
     content:
