@@ -16,8 +16,9 @@
     "outDir": "./dist",
     "paths": {
       "env/*": ["env/*"],
-      "apps/*": ["apps/*"],
-      "middlewares/*": ["middlewares/*"]
+      "models/*": ["models/*"],
+      "middlewares/*": ["middlewares/*"],
+      "routers/*": ["routers/*"]
     }
   },
   "ts-node": { "files": true, "require": ["tsconfig-paths/register"] },

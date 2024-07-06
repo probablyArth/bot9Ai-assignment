@@ -1,4 +1,4 @@
-import { Attribute, PrimaryKey, AutoIncrement, NotNull } from '@sequelize/core/decorators-legacy';
+import { Attribute, PrimaryKey, AutoIncrement, NotNull, Unique } from '@sequelize/core/decorators-legacy';
 import { Model, InferAttributes, InferCreationAttributes, CreationOptional, DataTypes } from '@sequelize/core';
 
 enum Role {
@@ -19,4 +19,9 @@ export class Conversation extends Model<InferAttributes<Conversation>, InferCrea
   @Attribute(DataTypes.STRING)
   @NotNull
   declare message: string;
+
+  @Attribute(DataTypes.STRING)
+  @NotNull
+  @Unique
+  declare sessionToken: string;
 }
