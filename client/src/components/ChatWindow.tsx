@@ -1,11 +1,11 @@
 import { useState, type FC, useRef, useEffect } from "react";
 import { Role, type ConversationMessage } from "@/types/Conversation";
-import Message from "./Message.tsx";
+import Message from "./Message";
 import { ScrollArea } from "./ui/scroll-area";
 import { Button } from "./ui/button";
 import { ArrowRight } from "lucide-react";
-import { Input } from "./ui/input.tsx";
-import { postChat } from "@/http/index.ts";
+import { Input } from "./ui/input";
+import { postChat } from "@/http/index";
 
 const ChatWindow: FC<{
   sessionToken: string;
@@ -34,16 +34,26 @@ const ChatWindow: FC<{
     }
   }, [isLoading]);
 
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const endOfMessagesRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (endOfMessagesRef.current) {
+      endOfMessagesRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [conversation]);
+
   return (
     <div className="relative flex w-full flex-col items-center gap-4 rounded-sm border">
       <div className="bg-primary absolute left-0 top-0 z-10 w-full rounded-sm p-4 text-center text-white">
         Find a room
       </div>
-      <ScrollArea className="h-[90vh] w-full">
+      <ScrollArea className="h-[90vh] w-full" ref={scrollRef}>
         <div className="flex flex-col gap-4 p-4 py-32 pt-20">
           {conversation.map((c, idx) => (
             <Message message={c} key={idx} />
           ))}
+          <div ref={endOfMessagesRef} />
         </div>
       </ScrollArea>
       <form
