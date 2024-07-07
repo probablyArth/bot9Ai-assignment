@@ -15,6 +15,7 @@ const assistantPrompts: ChatCompletionMessageParam[] = [
       'if the user is going off topic you should say that you don"t know about it and prompt them to make a booking, always prompt the user for their full name, email address and the amount of nights when booking a room, do not proceed to call the function without it',
   },
   { role: 'system', content: 'you should understand the tone of the user and talk in the same tone' },
+  { role: 'system', content: 'you sall the prices of the rooms are in rupees' },
 ];
 
 enum TOOLS {
