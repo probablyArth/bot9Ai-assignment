@@ -11,7 +11,7 @@ const Room: FC<{ room: RoomT }> = ({ room }) => {
       <CardHeader>
         <CardTitle>{room.name}</CardTitle>
         <CardDescription>{room.description}</CardDescription>
-        <CardDescription>${room.price}</CardDescription>
+        <CardDescription>₹{room.price}</CardDescription>
       </CardHeader>
     </Card>
   );
@@ -49,7 +49,7 @@ const Message: FC<{
                 Nights: <b>{message.data.booking.nights}</b>
               </CardDescription>
               <CardDescription>
-                Total Price: <b>{message.data.booking.totalPrice}</b>
+                Total Price: <b>₹{message.data.booking.totalPrice}</b>
               </CardDescription>
               <CardDescription className="text-md">
                 {message.data.booking.message}!!
