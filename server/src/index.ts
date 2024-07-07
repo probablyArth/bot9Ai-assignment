@@ -16,6 +16,9 @@ const app = Express();
 app.use(cors({ origin: getEnvVar('CLIENT_ORIGIN_URL') }));
 app.use(Express.json());
 app.use(logger());
+app.get('/', (_, res) => {
+  res.json({ ok: true });
+});
 app.use(ensureSession());
 app.use('/api', ApiRouter);
 
