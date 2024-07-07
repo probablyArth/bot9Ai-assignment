@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "node dist/index.js",
-    "build": "tsc; tscpaths -p tsconfig.json -s src -o dist",
+    "build": "tsc; tscpaths -p tsconfig.json -s ./src -o ./dist",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint -c .eslintrc.js . --fix --ext .ts",
     "dev": "nodemon --watch './src/**/*.ts' --exec ts-node ./src/index.ts"
