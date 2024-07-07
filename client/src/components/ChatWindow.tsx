@@ -20,7 +20,7 @@ const ChatWindow: FC<{
     const response = await postChat(message, sessionToken);
     setConversation((prev) => [
       ...prev,
-      { content: response.message, role: Role.ASSISTANT },
+      { content: response.message, role: Role.ASSISTANT, data: response.data },
     ]);
     setIsLoading(false);
   };

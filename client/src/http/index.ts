@@ -1,26 +1,30 @@
 import axios from "axios";
 
-type ChatResponse = {
+export type Room = {
+  id: number;
+  name: string;
+  price: number;
+  description: string;
+};
+
+export type Booking = {
+  bookingId: number;
+  message: string;
+  roomName: string;
+  fullName: string;
+  email: string;
+  nights: number;
+  totalPrice: number;
+};
+
+export type ChatResponse = {
   message: string;
   data:
     | {
-        rooms: {
-          id: number;
-          name: string;
-          price: number;
-          description: string;
-        };
+        rooms: Room[];
       }
     | {
-        booking: {
-          bookingId: number;
-          message: string;
-          roomName: string;
-          fullName: string;
-          email: string;
-          nights: number;
-          totalPrice: number;
-        };
+        booking: Booking;
       };
 };
 
