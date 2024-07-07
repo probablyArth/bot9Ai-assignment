@@ -1,4 +1,4 @@
-import { useState, type FC, useRef } from "react";
+import { useState, type FC, useRef, useEffect } from "react";
 import { Role, type ConversationMessage } from "@/types/Conversation";
 import Message from "./Message.tsx";
 import { ScrollArea } from "./ui/scroll-area";
@@ -27,6 +27,12 @@ const ChatWindow: FC<{
 
   const inputRef = useRef<HTMLInputElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
+
+  useEffect(() => {
+    if (!isLoading) {
+      inputRef.current?.focus();
+    }
+  }, [isLoading]);
 
   return (
     <div className="relative flex w-full flex-col items-center gap-4 rounded-sm border">
